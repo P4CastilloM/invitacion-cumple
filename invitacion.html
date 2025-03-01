@@ -14,39 +14,41 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             background-color: #f8f8f8;
             text-align: center;
             overflow: hidden;
-            flex-direction: column;
         }
         .container {
             width: 100%;
-            height: 100vh;
+            max-width: 500px;
+            height: auto;
             display: flex;
             justify-content: center;
             align-items: center;
         }
         img {
-            max-width: 100%;
-            max-height: 100%;
+            width: 100%;
+            height: auto;
             object-fit: contain;
+            border-radius: 10px;
         }
         button {
-            padding: 10px 20px;
+            padding: 12px 24px;
             font-size: 18px;
-            margin-top: 10px;
+            margin-top: 15px;
             background-color: #ffcc00;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
         }
         button:hover {
             background-color: #ff9900;
         }
-        #startButton {
-            display: none; /* Se mostrará si la reproducción es bloqueada */
+        #playButton {
+            display: none; /* Se mostrará solo si autoplay falla */
         }
     </style>
 </head>
@@ -55,36 +57,36 @@
         <img src="Invitación de cumpleaños monstruito infantil divertido amarillo.png" alt="Invitación de cumpleaños">
     </div>
 
-    <button id="startButton">🎶 Activar música</button>
+    <button id="playButton">🎶 Reproducir Música</button>
 
-    <audio id="music" autoplay loop>
+    <audio id="music" loop>
         <source src="Sergio_Denis-Gigante_chiquito.wav" type="audio/wav">
         Tu navegador no soporta audio.
     </audio>
 
     <script>
-        window.onload = function() {
+        document.addEventListener("DOMContentLoaded", function () {
             let audio = document.getElementById("music");
-            let startButton = document.getElementById("startButton");
+            let playButton = document.getElementById("playButton");
 
             // Intentar reproducir automáticamente
             let playPromise = audio.play();
 
             if (playPromise !== undefined) {
                 playPromise.then(() => {
-                    console.log("Reproducción automática exitosa");
-                }).catch(error => {
-                    console.log("Autoplay bloqueado, mostrando botón");
-                    startButton.style.display = "block"; // Muestra el botón si autoplay falla
+                    console.log("Autoplay permitido ✅");
+                }).catch(() => {
+                    console.log("Autoplay bloqueado ❌ - Se mostrará el botón");
+                    playButton.style.display = "block"; // Mostrar el botón si autoplay es bloqueado
                 });
             }
 
             // Si el usuario hace clic en el botón, se activa el audio
-            startButton.addEventListener("click", function() {
+            playButton.addEventListener("click", function () {
                 audio.play();
-                startButton.style.display = "none"; // Oculta el botón después de la reproducción
+                playButton.style.display = "none"; // Oculta el botón después de iniciar el audio
             });
-        };
+        });
     </script>
 </body>
 </html>
