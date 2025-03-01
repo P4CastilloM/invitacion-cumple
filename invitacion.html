@@ -14,6 +14,7 @@
             margin: 0;
             flex-direction: column;
             text-align: center;
+            cursor: pointer; /* Indica que se puede interactuar */
         }
         img {
             max-width: 90%;
@@ -23,25 +24,23 @@
         audio {
             display: none;
         }
-        p {
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
     <img src="Invitación de cumpleaños monstruito infantil divertido amarillo.png" alt="Invitación de cumpleaños">
-    <p>🔊 Toca en cualquier parte para escuchar la música 🎶</p>
-    <audio id="music" autoplay loop>
+
+    <audio id="music" loop>
         <source src="Sergio_Denis-Gigante_chiquito.wav" type="audio/wav">
         Tu navegador no soporta audio.
     </audio>
+
     <script>
-        document.addEventListener('click', function() {
-            document.querySelector('#music').play();
-        });
+        document.body.addEventListener('click', function () {
+            let audio = document.getElementById("music");
+            if (audio.paused) {
+                audio.play();
+            }
+        }, { once: true }); // Se activa solo una vez con el primer toque
     </script>
 </body>
 </html>
-
