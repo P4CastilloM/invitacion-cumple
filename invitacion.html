@@ -23,25 +23,23 @@
         audio {
             display: none;
         }
-        p {
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
     <img src="Invitación de cumpleaños monstruito infantil divertido amarillo.png" alt="Invitación de cumpleaños">
-    <p>🔊 Toca en cualquier parte para escuchar la música 🎶</p>
-    <audio id="music" autoplay loop>
+    <audio id="music" autoplay loop muted>
         <source src="Sergio_Denis-Gigante_chiquito.wav" type="audio/wav">
         Tu navegador no soporta audio.
     </audio>
+    
     <script>
-        document.addEventListener('click', function() {
-            document.querySelector('#music').play();
-        });
+        window.onload = function() {
+            let audio = document.getElementById("music");
+            audio.muted = false; // Desmutear
+            setTimeout(() => {
+                audio.play().catch(error => console.log("Autoplay bloqueado"));
+            }, 500); // Pequeño retraso para evitar bloqueo
+        };
     </script>
 </body>
 </html>
-
