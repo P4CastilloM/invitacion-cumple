@@ -33,13 +33,23 @@
 <body>
     <img src="Invitación de cumpleaños monstruito infantil divertido amarillo.png" alt="Invitación de cumpleaños">
     <p>🔊 Toca en cualquier parte para escuchar la música 🎶</p>
+    
     <audio id="music" autoplay loop>
         <source src="Sergio_Denis-Gigante_chiquito.wav" type="audio/wav">
         Tu navegador no soporta audio.
     </audio>
+
     <script>
+        let audio = document.getElementById("music");
+        let hasStarted = false;
+
         document.addEventListener('click', function() {
-            document.querySelector('#music').play();
+            if (!hasStarted) {
+                audio.play();
+                hasStarted = true;
+            } else {
+                audio.muted = !audio.muted; // Alterna entre sonido y silencio
+            }
         });
     </script>
 </body>
