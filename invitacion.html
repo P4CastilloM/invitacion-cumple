@@ -5,88 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación de Cumpleaños</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             height: 100vh;
             background-color: #f8f8f8;
+            margin: 0;
+            flex-direction: column;
             text-align: center;
-            overflow: hidden;
-        }
-        .container {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         img {
-            width: 100%;
+            max-width: 90%;
             height: auto;
-            object-fit: contain;
             border-radius: 10px;
         }
-        button {
-            padding: 12px 24px;
+        audio {
+            display: none;
+        }
+        p {
             font-size: 18px;
-            margin-top: 15px;
-            background-color: #ffcc00;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
             font-weight: bold;
-        }
-        button:hover {
-            background-color: #ff9900;
-        }
-        #playButton {
-            display: none; /* Se mostrará solo si autoplay falla */
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="Invitación de cumpleaños monstruito infantil divertido amarillo.png" alt="Invitación de cumpleaños">
-    </div>
-
-    <button id="playButton">🎶 Reproducir Música</button>
-
-    <audio id="music" loop>
+    <img src="Invitación de cumpleaños monstruito infantil divertido amarillo.png" alt="Invitación de cumpleaños">
+    <p>🔊 Toca en cualquier parte para escuchar la música 🎶</p>
+    <audio id="music" autoplay loop>
         <source src="Sergio_Denis-Gigante_chiquito.wav" type="audio/wav">
         Tu navegador no soporta audio.
     </audio>
-
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let audio = document.getElementById("music");
-            let playButton = document.getElementById("playButton");
-
-            // Intentar reproducir automáticamente
-            let playPromise = audio.play();
-
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    console.log("Autoplay permitido ✅");
-                }).catch(() => {
-                    console.log("Autoplay bloqueado ❌ - Se mostrará el botón");
-                    playButton.style.display = "block"; // Mostrar el botón si autoplay es bloqueado
-                });
-            }
-
-            // Si el usuario hace clic en el botón, se activa el audio
-            playButton.addEventListener("click", function () {
-                audio.play();
-                playButton.style.display = "none"; // Oculta el botón después de iniciar el audio
-            });
+        document.addEventListener('click', function() {
+            document.querySelector('#music').play();
         });
     </script>
 </body>
 </html>
+
