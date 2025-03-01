@@ -10,15 +10,18 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f8f8f8;
+            background-color: #FFEB73; /* Amarillo suave */
             margin: 0;
             flex-direction: column;
             text-align: center;
+            overflow: hidden; /* Evita el scroll */
         }
         img {
-            max-width: 90%;
+            max-width: 100%;
+            max-height: 90vh; /* Limita la altura para que no necesite scroll */
             height: auto;
             border-radius: 10px;
+            object-fit: contain; /* Mantiene las proporciones sin cortar la imagen */
         }
         audio {
             display: none;
