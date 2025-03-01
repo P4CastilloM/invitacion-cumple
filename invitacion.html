@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Cumpleaños</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+            margin: 0;
+            flex-direction: column;
+            text-align: center;
+        }
+        img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10px;
+        }
+        audio {
+            display: none;
+        }
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img src="Invitación de cumpleaños monstruito infantil divertido amarillo.png" alt="Invitación de cumpleaños">
+    <p>🔊 Toca en cualquier parte para escuchar la música 🎶</p>
+    <audio id="music" autoplay loop>
+        <source src="Sergio_Denis-Gigante_chiquito.wav" type="audio/wav">
+        Tu navegador no soporta audio.
+    </audio>
+    <script>
+        document.addEventListener('click', function() {
+            document.querySelector('#music').play();
+        });
+    </script>
+</body>
+</html>
+
